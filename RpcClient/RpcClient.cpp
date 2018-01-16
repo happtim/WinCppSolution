@@ -14,6 +14,7 @@ int main() {
 	XmlRpcClient c("localhost",8000);
 	XmlRpcValue oneArg,result;
 	oneArg[0] = 2;
+	oneArg[1] = 1.1;
 	if (c.execute("findai", oneArg, result)) {
 		std::cout << "xmlrpc server return message " << result << std::endl;
 	}
