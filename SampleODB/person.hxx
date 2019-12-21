@@ -18,7 +18,7 @@ typedef std::set<std::string> emails;
 typedef std::map<unsigned short, float> age_weight_map;
 
 
-
+//pragma db value 为odb.exe的预编译命令. 表明这个email_address 为一个 db object的 扩展属性, 最终会生成一个列.
 #pragma db value
 class email_address
 {
