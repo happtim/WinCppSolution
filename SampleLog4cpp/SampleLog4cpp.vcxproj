@@ -73,6 +73,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>D:\Projects\WinCppSolution\thirdparty\log4cpp_x86-windows\include\orocos;$(IncludePath)</IncludePath>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -100,8 +104,13 @@
       <AdditionalDependencies>orocos-log4cppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /r /y "$(SolutionDir)\thirdparty\log4cpp_x86-windows\debug\bin\orocos-log4cppd.dll" "$(TargetDir)"</Command>
+      <Command>xcopy /r /y "$(SolutionDir)thirdparty\log4cpp_x86-windows\debug\bin\orocos-log4cppd.dll" "$(TargetDir)"
+xcopy /r /y "$(ProjectDir)log4cpp.properties" "$(TargetDir)"</Command>
     </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
