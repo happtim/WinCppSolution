@@ -2,3 +2,6 @@ Debug
 ipch
 WinCppSolution.sdf
 .vs
+*.db
+*.user
+*.filters

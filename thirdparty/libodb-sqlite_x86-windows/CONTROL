@@ -1,0 +1,7 @@
+Package: libodb-sqlite
+Version: 2.4.0-5
+Depends: libodb, sqlite3
+Architecture: x86-windows
+Multi-Arch: same
+Abi: 31a7a349d37499310cb2bd38ad9229289473c465
+Description: Sqlite support for the ODB ORM library
