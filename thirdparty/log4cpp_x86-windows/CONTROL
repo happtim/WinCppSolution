@@ -1,0 +1,6 @@
+Package: log4cpp
+Version: 2.9.1-2
+Architecture: x86-windows
+Multi-Arch: same
+Abi: 6b21564adec0e0218b9419b3b0e74e00a7843a86
+Description: Log4cpp is library of C++ classes for flexible logging to files, syslog, IDSA and other destinations. It is modeled after the Log4j Java library, staying as close to their API as is reasonable.
