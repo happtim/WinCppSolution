@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Projects\CppSolution\thirdparty\sqlite3_x86-windows\include;D:\Projects\CppSolution\thirdparty\libodb-sqlite_x86-windows\include;D:\Projects\CppSolution\thirdparty\libodb_x86-windows\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Projects\CppSolution\thirdparty\sqlite3_x86-windows\debug\lib;D:\Projects\CppSolution\thirdparty\libodb-sqlite_x86-windows\debug\lib;D:\Projects\CppSolution\thirdparty\libodb_x86-windows\debug\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)thirdparty\sqlite3_x86-windows\include;$(SolutionDir)thirdparty\libodb-sqlite_x86-windows\include;$(SolutionDir)thirdparty\libodb_x86-windows\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)thirdparty\sqlite3_x86-windows\debug\lib;$(SolutionDir)thirdparty\libodb-sqlite_x86-windows\debug\lib;$(SolutionDir)thirdparty\libodb_x86-windows\debug\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>

@@ -1,4 +1,3 @@
-Debug
 ipch
 WinCppSolution.sdf
 .vs
@@ -7,3 +6,5 @@ WinCppSolution.sdf
 *.filters
 *.log
 logs
+debug
+!thirdparty/**/debug
