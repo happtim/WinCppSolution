@@ -5,3 +5,4 @@ WinCppSolution.sdf
 *.db
 *.user
 *.filters
+*.log
