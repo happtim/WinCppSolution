@@ -118,6 +118,11 @@
       <AdditionalLibraryDirectories>D:\Projects\WinCppSolution\thirdparty\sqlite3_x86-windows\debug\lib;D:\Projects\WinCppSolution\thirdparty\libodb-sqlite_x86-windows\debug\lib;D:\Projects\WinCppSolution\thirdparty\libodb_x86-windows\debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libodb.lib;libodb-sqlite.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /r /y "$(SolutionDir)\thirdparty\libodb_x86-windows\debug\bin\libodb.dll" "$(TargetDir)"
+xcopy /r /y "$(SolutionDir)\thirdparty\libodb-sqlite_x86-windows\debug\bin\libodb-sqlite.dll" "$(TargetDir)"
+xcopy /r /y "$(SolutionDir)\thirdparty\sqlite3_x86-windows\debug\bin\sqlite3.dll" "$(TargetDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
