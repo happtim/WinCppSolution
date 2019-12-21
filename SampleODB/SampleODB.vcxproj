@@ -77,8 +77,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Projects\WinCppSolution\thirdparty\sqlite3_x86-windows\include;D:\Projects\WinCppSolution\thirdparty\libodb-sqlite_x86-windows\include;D:\Projects\WinCppSolution\thirdparty\libodb_x86-windows\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)thirdparty\sqlite3_x86-windows\include;$(SolutionDir)thirdparty\libodb-sqlite_x86-windows\include;$(SolutionDir)thirdparty\libodb_x86-windows\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)thirdparty\sqlite3_x86-windows\debug\lib;$(SolutionDir)thirdparty\libodb-sqlite_x86-windows\debug\lib;$(SolutionDir)thirdparty\libodb_x86-windows\debug\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -115,7 +115,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Projects\WinCppSolution\thirdparty\sqlite3_x86-windows\debug\lib;D:\Projects\WinCppSolution\thirdparty\libodb-sqlite_x86-windows\debug\lib;D:\Projects\WinCppSolution\thirdparty\libodb_x86-windows\debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
       <AdditionalDependencies>libodb.lib;libodb-sqlite.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
