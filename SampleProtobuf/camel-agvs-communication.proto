@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package Communication;
+
+
+message CamelMessage{
+
+	oneof onlyone{
+		AllowFromAgvs allowFromAgvs = 1;
+		ReportToAgvs reportToAgvs = 2;
+		MissonFromAgvs missonFromAgvs = 3;
+		RequestToAgvs requestToAgvs = 4;
+	}
+
+	message AllowFromAgvs{
+		AgvInAgvs agv = 1;
+		string errorMessage = 2;
+		bool allowCharging = 3;
+		repeated  AgvInAgvs otherAgv = 4 ;
+	}
+
+	message ReportToAgvs{
+		string currentStation = 1;
+		string version = 2;
+		float battery = 3;
+		bool isCharging = 4;
+		repeated  Device devices = 5;
+		Posion posion = 6;
+	}
+
+	message MissonFromAgvs{
+		string route = 1;
+		string actionType = 2;
+		Task task = 3;
+	}
+	
+	message RequestToAgvs{
+		bool getMissonInfo = 1;
+		bool setUseable = 2;
+		bool cancelTask = 3;
+		bool requestCharging = 4;
+	}
+	
+}
+
+message Posion{
+	float X = 1;
+	float Y = 2;
+	float Theta = 3;
+}
+
+message Device {
+	int32 id =1;
+	string name = 2;
+	float value = 4;
+	bool isActivate = 3;
+}
+
+message AgvInAgvs{
+	string name = 1;
+	string currentStation = 2;
+	string targetStation = 3;
+	bool isUseable = 4;
+	bool hasTask = 5;
+}
+
+message Task{
+	string from = 1;
+	string to = 2;
+}
