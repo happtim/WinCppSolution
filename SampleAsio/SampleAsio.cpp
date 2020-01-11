@@ -16,7 +16,9 @@ int main()
 
 	//test_heartbeat();
 
-	test_timer();
+	//test_timer();
+
+	test_buffer();
 
     std::cout << "Hello World!\n";
 }

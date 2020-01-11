@@ -9,5 +9,6 @@ void test_chat_client();
 void test_echo_server();
 void test_heartbeat();
 void test_timer();
+void test_buffer();
 
 #endif // !iostrem
