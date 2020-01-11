@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClCompile Include="test_chat_client.cpp" />
     <ClCompile Include="test_echo_server.cpp" />
+    <ClCompile Include="test_heartbeat.cpp" />
     <ClCompile Include="test_iostream_client.cpp" />
     <ClCompile Include="SampleAsio.cpp" />
     <ClCompile Include="test_example.h">
@@ -161,6 +162,7 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="test_timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="chat_message.h" />

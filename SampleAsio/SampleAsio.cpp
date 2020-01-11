@@ -12,7 +12,11 @@ int main()
 	 
 	//test_chat_client();
 	
-	test_echo_server();
+	//test_echo_server();
+
+	//test_heartbeat();
+
+	test_timer();
 
     std::cout << "Hello World!\n";
 }
