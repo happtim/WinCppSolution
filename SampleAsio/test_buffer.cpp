@@ -20,6 +20,10 @@ void test_const_buffer(){
 
 	const_buffer = asio::buffer(buf, 128);
 	std::cout << (char*)const_buffer .data() << std::endl;
+
+	std::string str_buf = "string buffer";
+	const_buffer = asio::buffer(str_buf.c_str(), str_buf.length());
+	std::cout << (char*)const_buffer.data() << std::endl;
 }
 
 void test_mutable_buffer() {

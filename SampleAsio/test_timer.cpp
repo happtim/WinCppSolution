@@ -6,16 +6,7 @@
 void test_timer_block();
 void test_timer_async();
 
-void test_timer() {
-	/*
-	Timer 有两个状态,一个是expires ,一个是 not expires.
-	当调用wait时,如果expires就直接调用wait的回调函数
-	*/
 
-	//test_timer_block();
-	test_timer_async();
-
-}
 
 void test_timer_block() {
 
@@ -58,3 +49,17 @@ void  test_timer_async() {
 	std::this_thread::sleep_for(std::chrono::seconds(15));
 }
 
+/*
+测试定时器触发
+*/
+
+void test_timer() {
+	/*
+	Timer 有两个状态,一个是expires ,一个是 not expires.
+	当调用wait时,如果expires就直接调用wait的回调函数
+	*/
+
+	//test_timer_block();
+	test_timer_async();
+
+}

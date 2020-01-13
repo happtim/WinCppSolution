@@ -11,7 +11,9 @@ std::string make_daytime_string()
 	time_t now = time(0);
 	return ctime(&now);
 }
-
+/*
+以流的方式进行io
+*/
 void test_iostream_client() {
 
 	try

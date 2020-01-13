@@ -325,6 +325,11 @@ class client
 		char data_[1024];
 };
 
+/*
+测试心跳的处理.
+写心跳 heartbeat_timer_
+读心跳  deadline_
+*/
 void test_heartbeat() {
 
 	try

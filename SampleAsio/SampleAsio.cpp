@@ -22,7 +22,10 @@ int main()
 
 		//test_async_func();
 
-		test_service();
+		//test_service();
+
+		test_serial_port();
+
 
 		std::cout << "Hello World!\n";
 	}

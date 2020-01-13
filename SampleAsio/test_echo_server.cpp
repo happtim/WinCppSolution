@@ -81,6 +81,9 @@ class server
 		tcp::acceptor acceptor_;
 };
 
+/*
+发什么回什么的服务器
+*/
 void test_echo_server() {
 
 
