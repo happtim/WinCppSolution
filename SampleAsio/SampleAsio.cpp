@@ -7,19 +7,29 @@
 
 int main()
 {
+	try {
+		//test_iostream_client();
 
-	//test_iostream_client();
-	 
-	//test_chat_client();
-	
-	//test_echo_server();
+		//test_chat_client();
 
-	//test_heartbeat();
+		//test_echo_server();
 
-	//test_timer();
+		//test_heartbeat();
 
-	test_buffer();
+		//test_timer();
 
-    std::cout << "Hello World!\n";
+		//test_buffer();
+
+		//test_async_func();
+
+		test_service();
+
+		std::cout << "Hello World!\n";
+	}
+	catch (std::exception ex) {
+		std::cerr << ex.what() << std::endl;
+	}
+
+
 }
 

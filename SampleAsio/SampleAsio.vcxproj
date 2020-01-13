@@ -152,6 +152,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="service\basic_commander.hpp" />
+    <ClCompile Include="service\commander_service.cpp" />
+    <ClCompile Include="service\logger_service.cpp" />
+    <ClCompile Include="service\test_service.cpp" />
+    <ClCompile Include="test_async_func.cpp" />
     <ClCompile Include="test_buffer.cpp" />
     <ClCompile Include="test_chat_client.cpp" />
     <ClCompile Include="test_echo_server.cpp" />
@@ -162,11 +167,18 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="test_timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="chat_message.h" />
+    <ClInclude Include="service\basic_logger.hpp" />
+    <ClInclude Include="service\commander.hpp" />
+    <ClInclude Include="service\commander_service.hpp" />
+    <ClInclude Include="service\logger.hpp" />
+    <ClInclude Include="service\logger_service.hpp" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

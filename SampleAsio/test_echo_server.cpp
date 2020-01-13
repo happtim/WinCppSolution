@@ -89,6 +89,7 @@ void test_echo_server() {
 		asio::io_context io_context;
 		server s(io_context, 9601);
 		io_context.run();
+		//std::thread t([&io_context]() {io_context.run(); });
 	}
 	catch (std::exception & e) {
 		std::cerr << "Exception: " << e.what() << std::endl;

@@ -10,5 +10,7 @@ void test_echo_server();
 void test_heartbeat();
 void test_timer();
 void test_buffer();
+void test_async_func();
+void test_service();
 
 #endif // !iostrem
