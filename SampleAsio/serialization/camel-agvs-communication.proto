@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package serialization;
+
+// D:\Projects\WinCppSolution\thirdparty\protobuf_x86-windows\tools\protoc.exe -I. --cpp_out=. camel-agvs-communication.proto
+message CamelMessage{
+
+	oneof onlyone{
+		AllowFromAgvs allowFromAgvs = 1;
+		ReportToAgvs reportToAgvs = 2;
+	}
+
+	message AllowFromAgvs{
+		AgvInAgvs agv = 1;
+		string errorMessage = 2;
+		bool allowCharging = 3;
+		repeated  AgvInAgvs otherAgv = 4 ;
+	}
+
+	message ReportToAgvs{
+		string currentStation = 1;
+		string version = 2;
+		float battery = 3;
+		bool isCharging = 4;
+		repeated  Device devices = 5;
+		Posion posion = 6;
+	}
+	
+}
+
+message Posion{
+	float X = 1;
+	float Y = 2;
+	float Theta = 3;
+}
+
+message Device {
+	int32 id =1;
+	string name = 2;
+	float value = 4;
+	bool isActivate = 3;
+}
+
+message AgvInAgvs{
+	string name = 1;
+	string currentStation = 2;
+	string targetStation = 3;
+	bool isUseable = 4;
+	bool hasTask = 5;
+}
