@@ -222,19 +222,19 @@ const char descriptor_table_protodef_camel_2dagvs_2dcommunication_2eproto[] PROT
   "owFromAgvsH\000\022@\n\014reportToAgvs\030\002 \001(\0132(.ser"
   "ialization.CamelMessage.ReportToAgvsH\000\032\217"
   "\001\n\rAllowFromAgvs\022%\n\003agv\030\001 \001(\0132\030.serializ"
-  "ation.AgvInAgvs\022\024\n\014errorMessage\030\002 \001(\t\022\025\n"
+  "ation.AgvInAgvs\022\024\n\014errorMessage\030\002 \001(\014\022\025\n"
   "\rallowCharging\030\003 \001(\010\022*\n\010otherAgv\030\004 \003(\0132\030"
   ".serialization.AgvInAgvs\032\253\001\n\014ReportToAgv"
-  "s\022\026\n\016currentStation\030\001 \001(\t\022\017\n\007version\030\002 \001"
-  "(\t\022\017\n\007battery\030\003 \001(\002\022\022\n\nisCharging\030\004 \001(\010\022"
+  "s\022\026\n\016currentStation\030\001 \001(\014\022\017\n\007version\030\002 \001"
+  "(\014\022\017\n\007battery\030\003 \001(\002\022\022\n\nisCharging\030\004 \001(\010\022"
   "&\n\007devices\030\005 \003(\0132\025.serialization.Device\022"
   "%\n\006posion\030\006 \001(\0132\025.serialization.PosionB\t"
   "\n\007onlyone\"-\n\006Posion\022\t\n\001X\030\001 \001(\002\022\t\n\001Y\030\002 \001("
   "\002\022\r\n\005Theta\030\003 \001(\002\"E\n\006Device\022\n\n\002id\030\001 \001(\005\022\014"
-  "\n\004name\030\002 \001(\t\022\r\n\005value\030\004 \001(\002\022\022\n\nisActivat"
-  "e\030\003 \001(\010\"l\n\tAgvInAgvs\022\014\n\004name\030\001 \001(\t\022\026\n\016cu"
-  "rrentStation\030\002 \001(\t\022\025\n\rtargetStation\030\003 \001("
-  "\t\022\021\n\tisUseable\030\004 \001(\010\022\017\n\007hasTask\030\005 \001(\010b\006p"
+  "\n\004name\030\002 \001(\014\022\r\n\005value\030\004 \001(\002\022\022\n\nisActivat"
+  "e\030\003 \001(\010\"l\n\tAgvInAgvs\022\014\n\004name\030\001 \001(\014\022\026\n\016cu"
+  "rrentStation\030\002 \001(\014\022\025\n\rtargetStation\030\003 \001("
+  "\014\022\021\n\tisUseable\030\004 \001(\010\022\017\n\007hasTask\030\005 \001(\010b\006p"
   "roto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_camel_2dagvs_2dcommunication_2eproto_deps[1] = {
@@ -355,12 +355,11 @@ const char* CamelMessage_AllowFromAgvs::_InternalParse(const char* ptr, ::PROTOB
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string errorMessage = 2;
+      // bytes errorMessage = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_errormessage();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "serialization.CamelMessage.AllowFromAgvs.errorMessage"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -417,13 +416,9 @@ failure:
         1, _Internal::agv(this), target, stream);
   }
 
-  // string errorMessage = 2;
+  // bytes errorMessage = 2;
   if (this->errormessage().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_errormessage().data(), static_cast<int>(this->_internal_errormessage().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "serialization.CamelMessage.AllowFromAgvs.errorMessage");
-    target = stream->WriteStringMaybeAliased(
+    target = stream->WriteBytesMaybeAliased(
         2, this->_internal_errormessage(), target);
   }
 
@@ -464,10 +459,10 @@ size_t CamelMessage_AllowFromAgvs::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // string errorMessage = 2;
+  // bytes errorMessage = 2;
   if (this->errormessage().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_errormessage());
   }
 
@@ -659,21 +654,19 @@ const char* CamelMessage_ReportToAgvs::_InternalParse(const char* ptr, ::PROTOBU
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // string currentStation = 1;
+      // bytes currentStation = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_currentstation();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "serialization.CamelMessage.ReportToAgvs.currentStation"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string version = 2;
+      // bytes version = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_version();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "serialization.CamelMessage.ReportToAgvs.version"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -736,23 +729,15 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string currentStation = 1;
+  // bytes currentStation = 1;
   if (this->currentstation().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_currentstation().data(), static_cast<int>(this->_internal_currentstation().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "serialization.CamelMessage.ReportToAgvs.currentStation");
-    target = stream->WriteStringMaybeAliased(
+    target = stream->WriteBytesMaybeAliased(
         1, this->_internal_currentstation(), target);
   }
 
-  // string version = 2;
+  // bytes version = 2;
   if (this->version().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_version().data(), static_cast<int>(this->_internal_version().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "serialization.CamelMessage.ReportToAgvs.version");
-    target = stream->WriteStringMaybeAliased(
+    target = stream->WriteBytesMaybeAliased(
         2, this->_internal_version(), target);
   }
 
@@ -807,17 +792,17 @@ size_t CamelMessage_ReportToAgvs::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // string currentStation = 1;
+  // bytes currentStation = 1;
   if (this->currentstation().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_currentstation());
   }
 
-  // string version = 2;
+  // bytes version = 2;
   if (this->version().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_version());
   }
 
@@ -1543,12 +1528,11 @@ const char* Device::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string name = 2;
+      // bytes name = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_name();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "serialization.Device.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1598,13 +1582,9 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
-  // string name = 2;
+  // bytes name = 2;
   if (this->name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "serialization.Device.name");
-    target = stream->WriteStringMaybeAliased(
+    target = stream->WriteBytesMaybeAliased(
         2, this->_internal_name(), target);
   }
 
@@ -1636,10 +1616,10 @@ size_t Device::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string name = 2;
+  // bytes name = 2;
   if (this->name().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_name());
   }
 
@@ -1826,30 +1806,27 @@ const char* AgvInAgvs::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // string name = 1;
+      // bytes name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
           auto str = _internal_mutable_name();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "serialization.AgvInAgvs.name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string currentStation = 2;
+      // bytes currentStation = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           auto str = _internal_mutable_currentstation();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "serialization.AgvInAgvs.currentStation"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string targetStation = 3;
+      // bytes targetStation = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
           auto str = _internal_mutable_targetstation();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "serialization.AgvInAgvs.targetStation"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1893,33 +1870,21 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string name = 1;
+  // bytes name = 1;
   if (this->name().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "serialization.AgvInAgvs.name");
-    target = stream->WriteStringMaybeAliased(
+    target = stream->WriteBytesMaybeAliased(
         1, this->_internal_name(), target);
   }
 
-  // string currentStation = 2;
+  // bytes currentStation = 2;
   if (this->currentstation().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_currentstation().data(), static_cast<int>(this->_internal_currentstation().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "serialization.AgvInAgvs.currentStation");
-    target = stream->WriteStringMaybeAliased(
+    target = stream->WriteBytesMaybeAliased(
         2, this->_internal_currentstation(), target);
   }
 
-  // string targetStation = 3;
+  // bytes targetStation = 3;
   if (this->targetstation().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_targetstation().data(), static_cast<int>(this->_internal_targetstation().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "serialization.AgvInAgvs.targetStation");
-    target = stream->WriteStringMaybeAliased(
+    target = stream->WriteBytesMaybeAliased(
         3, this->_internal_targetstation(), target);
   }
 
@@ -1951,24 +1916,24 @@ size_t AgvInAgvs::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string name = 1;
+  // bytes name = 1;
   if (this->name().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_name());
   }
 
-  // string currentStation = 2;
+  // bytes currentStation = 2;
   if (this->currentstation().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_currentstation());
   }
 
-  // string targetStation = 3;
+  // bytes targetStation = 3;
   if (this->targetstation().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_targetstation());
   }
 

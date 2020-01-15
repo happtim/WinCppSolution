@@ -12,14 +12,14 @@ message CamelMessage{
 
 	message AllowFromAgvs{
 		AgvInAgvs agv = 1;
-		string errorMessage = 2;
+		bytes errorMessage = 2;
 		bool allowCharging = 3;
 		repeated  AgvInAgvs otherAgv = 4 ;
 	}
 
 	message ReportToAgvs{
-		string currentStation = 1;
-		string version = 2;
+		bytes currentStation = 1;
+		bytes version = 2;
 		float battery = 3;
 		bool isCharging = 4;
 		repeated  Device devices = 5;
@@ -36,15 +36,15 @@ message Posion{
 
 message Device {
 	int32 id =1;
-	string name = 2;
+	bytes name = 2;
 	float value = 4;
 	bool isActivate = 3;
 }
 
 message AgvInAgvs{
-	string name = 1;
-	string currentStation = 2;
-	string targetStation = 3;
+	bytes name = 1;
+	bytes currentStation = 2;
+	bytes targetStation = 3;
 	bool isUseable = 4;
 	bool hasTask = 5;
 }

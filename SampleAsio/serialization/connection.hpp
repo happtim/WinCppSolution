@@ -13,9 +13,9 @@
 
 #include "../stdafx.h"
 
-#include "camel-agvs-communication.pb.h"
-
 #include <iomanip>
+
+using namespace std::placeholders;
 
 namespace serialization {
 
@@ -54,7 +54,7 @@ public:
     //outbound_data_ = archive_stream.str();
 
 
-	outbound_data_ = t.SerializeAsString();
+	  t.SerializeToString(&outbound_data_);
 
     // Format the header.
     //std::ostringstream header_stream;
@@ -67,7 +67,7 @@ public:
     {
       // Something went wrong, inform the caller.
       asio::error_code error(asio::error::invalid_argument);
-      asio::post(socket_.get_executor(), std::bind(handler, error));
+      asio::post(socket_.get_executor(), std::bind(handler, error, 0));
       return;
     }
 
@@ -118,7 +118,7 @@ public:
 
       // Start an asynchronous call to receive the data.
       inbound_data_.resize(inbound_data_size);
-      void (connection::*f)(const asio::error_code&, T&, boost::tuple<Handler>)
+      void (connection::*f)(const asio::error_code&, T&, std::tuple<Handler>)
         = &connection::handle_read_data<T, Handler>;
 
       asio::async_read(socket_, asio::buffer(inbound_data_),
@@ -145,7 +145,8 @@ public:
         //boost::archive::text_iarchive archive(archive_stream);
         //archive >> t;
 
-		t.ParseFromIstream(receive_data);
+		t.ParseFromString(receive_data);
+
       }
       catch (std::exception& e)
       {

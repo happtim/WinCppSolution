@@ -13,5 +13,6 @@ void test_buffer();
 void test_async_func();
 void test_service();
 void test_serial_port();
+void test_protobuf();
 
 #endif // !iostrem

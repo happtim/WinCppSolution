@@ -9,3 +9,4 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include "serialization/camel-agvs-communication.pb.h"

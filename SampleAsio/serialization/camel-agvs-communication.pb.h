@@ -215,13 +215,13 @@ class CamelMessage_AllowFromAgvs :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::serialization::AgvInAgvs >&
       otheragv() const;
 
-  // string errorMessage = 2;
+  // bytes errorMessage = 2;
   void clear_errormessage();
   const std::string& errormessage() const;
   void set_errormessage(const std::string& value);
   void set_errormessage(std::string&& value);
   void set_errormessage(const char* value);
-  void set_errormessage(const char* value, size_t size);
+  void set_errormessage(const void* value, size_t size);
   std::string* mutable_errormessage();
   std::string* release_errormessage();
   void set_allocated_errormessage(std::string* errormessage);
@@ -400,13 +400,13 @@ class CamelMessage_ReportToAgvs :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::serialization::Device >&
       devices() const;
 
-  // string currentStation = 1;
+  // bytes currentStation = 1;
   void clear_currentstation();
   const std::string& currentstation() const;
   void set_currentstation(const std::string& value);
   void set_currentstation(std::string&& value);
   void set_currentstation(const char* value);
-  void set_currentstation(const char* value, size_t size);
+  void set_currentstation(const void* value, size_t size);
   std::string* mutable_currentstation();
   std::string* release_currentstation();
   void set_allocated_currentstation(std::string* currentstation);
@@ -416,13 +416,13 @@ class CamelMessage_ReportToAgvs :
   std::string* _internal_mutable_currentstation();
   public:
 
-  // string version = 2;
+  // bytes version = 2;
   void clear_version();
   const std::string& version() const;
   void set_version(const std::string& value);
   void set_version(std::string&& value);
   void set_version(const char* value);
-  void set_version(const char* value, size_t size);
+  void set_version(const void* value, size_t size);
   std::string* mutable_version();
   std::string* release_version();
   void set_allocated_version(std::string* version);
@@ -914,13 +914,13 @@ class Device :
     kIsActivateFieldNumber = 3,
     kValueFieldNumber = 4,
   };
-  // string name = 2;
+  // bytes name = 2;
   void clear_name();
   const std::string& name() const;
   void set_name(const std::string& value);
   void set_name(std::string&& value);
   void set_name(const char* value);
-  void set_name(const char* value, size_t size);
+  void set_name(const void* value, size_t size);
   std::string* mutable_name();
   std::string* release_name();
   void set_allocated_name(std::string* name);
@@ -1083,13 +1083,13 @@ class AgvInAgvs :
     kIsUseableFieldNumber = 4,
     kHasTaskFieldNumber = 5,
   };
-  // string name = 1;
+  // bytes name = 1;
   void clear_name();
   const std::string& name() const;
   void set_name(const std::string& value);
   void set_name(std::string&& value);
   void set_name(const char* value);
-  void set_name(const char* value, size_t size);
+  void set_name(const void* value, size_t size);
   std::string* mutable_name();
   std::string* release_name();
   void set_allocated_name(std::string* name);
@@ -1099,13 +1099,13 @@ class AgvInAgvs :
   std::string* _internal_mutable_name();
   public:
 
-  // string currentStation = 2;
+  // bytes currentStation = 2;
   void clear_currentstation();
   const std::string& currentstation() const;
   void set_currentstation(const std::string& value);
   void set_currentstation(std::string&& value);
   void set_currentstation(const char* value);
-  void set_currentstation(const char* value, size_t size);
+  void set_currentstation(const void* value, size_t size);
   std::string* mutable_currentstation();
   std::string* release_currentstation();
   void set_allocated_currentstation(std::string* currentstation);
@@ -1115,13 +1115,13 @@ class AgvInAgvs :
   std::string* _internal_mutable_currentstation();
   public:
 
-  // string targetStation = 3;
+  // bytes targetStation = 3;
   void clear_targetstation();
   const std::string& targetstation() const;
   void set_targetstation(const std::string& value);
   void set_targetstation(std::string&& value);
   void set_targetstation(const char* value);
-  void set_targetstation(const char* value, size_t size);
+  void set_targetstation(const void* value, size_t size);
   std::string* mutable_targetstation();
   std::string* release_targetstation();
   void set_allocated_targetstation(std::string* targetstation);
@@ -1233,7 +1233,7 @@ inline void CamelMessage_AllowFromAgvs::set_allocated_agv(::serialization::AgvIn
   // @@protoc_insertion_point(field_set_allocated:serialization.CamelMessage.AllowFromAgvs.agv)
 }
 
-// string errorMessage = 2;
+// bytes errorMessage = 2;
 inline void CamelMessage_AllowFromAgvs::clear_errormessage() {
   errormessage_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -1268,7 +1268,7 @@ inline void CamelMessage_AllowFromAgvs::set_errormessage(const char* value) {
   errormessage_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:serialization.CamelMessage.AllowFromAgvs.errorMessage)
 }
-inline void CamelMessage_AllowFromAgvs::set_errormessage(const char* value, size_t size) {
+inline void CamelMessage_AllowFromAgvs::set_errormessage(const void* value, size_t size) {
   
   errormessage_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -1356,7 +1356,7 @@ CamelMessage_AllowFromAgvs::otheragv() const {
 
 // CamelMessage_ReportToAgvs
 
-// string currentStation = 1;
+// bytes currentStation = 1;
 inline void CamelMessage_ReportToAgvs::clear_currentstation() {
   currentstation_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -1391,7 +1391,7 @@ inline void CamelMessage_ReportToAgvs::set_currentstation(const char* value) {
   currentstation_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:serialization.CamelMessage.ReportToAgvs.currentStation)
 }
-inline void CamelMessage_ReportToAgvs::set_currentstation(const char* value, size_t size) {
+inline void CamelMessage_ReportToAgvs::set_currentstation(const void* value, size_t size) {
   
   currentstation_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -1416,7 +1416,7 @@ inline void CamelMessage_ReportToAgvs::set_allocated_currentstation(std::string*
   // @@protoc_insertion_point(field_set_allocated:serialization.CamelMessage.ReportToAgvs.currentStation)
 }
 
-// string version = 2;
+// bytes version = 2;
 inline void CamelMessage_ReportToAgvs::clear_version() {
   version_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -1451,7 +1451,7 @@ inline void CamelMessage_ReportToAgvs::set_version(const char* value) {
   version_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:serialization.CamelMessage.ReportToAgvs.version)
 }
-inline void CamelMessage_ReportToAgvs::set_version(const char* value, size_t size) {
+inline void CamelMessage_ReportToAgvs::set_version(const void* value, size_t size) {
   
   version_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -1816,7 +1816,7 @@ inline void Device::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:serialization.Device.id)
 }
 
-// string name = 2;
+// bytes name = 2;
 inline void Device::clear_name() {
   name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -1851,7 +1851,7 @@ inline void Device::set_name(const char* value) {
   name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:serialization.Device.name)
 }
-inline void Device::set_name(const char* value, size_t size) {
+inline void Device::set_name(const void* value, size_t size) {
   
   name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -1920,7 +1920,7 @@ inline void Device::set_isactivate(bool value) {
 
 // AgvInAgvs
 
-// string name = 1;
+// bytes name = 1;
 inline void AgvInAgvs::clear_name() {
   name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -1955,7 +1955,7 @@ inline void AgvInAgvs::set_name(const char* value) {
   name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:serialization.AgvInAgvs.name)
 }
-inline void AgvInAgvs::set_name(const char* value, size_t size) {
+inline void AgvInAgvs::set_name(const void* value, size_t size) {
   
   name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -1980,7 +1980,7 @@ inline void AgvInAgvs::set_allocated_name(std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:serialization.AgvInAgvs.name)
 }
 
-// string currentStation = 2;
+// bytes currentStation = 2;
 inline void AgvInAgvs::clear_currentstation() {
   currentstation_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -2015,7 +2015,7 @@ inline void AgvInAgvs::set_currentstation(const char* value) {
   currentstation_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:serialization.AgvInAgvs.currentStation)
 }
-inline void AgvInAgvs::set_currentstation(const char* value, size_t size) {
+inline void AgvInAgvs::set_currentstation(const void* value, size_t size) {
   
   currentstation_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -2040,7 +2040,7 @@ inline void AgvInAgvs::set_allocated_currentstation(std::string* currentstation)
   // @@protoc_insertion_point(field_set_allocated:serialization.AgvInAgvs.currentStation)
 }
 
-// string targetStation = 3;
+// bytes targetStation = 3;
 inline void AgvInAgvs::clear_targetstation() {
   targetstation_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -2075,7 +2075,7 @@ inline void AgvInAgvs::set_targetstation(const char* value) {
   targetstation_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:serialization.AgvInAgvs.targetStation)
 }
-inline void AgvInAgvs::set_targetstation(const char* value, size_t size) {
+inline void AgvInAgvs::set_targetstation(const void* value, size_t size) {
   
   targetstation_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));

@@ -24,8 +24,9 @@ int main()
 
 		//test_service();
 
-		test_serial_port();
+		//test_serial_port();
 
+		test_protobuf();
 
 		std::cout << "Hello World!\n";
 	}
