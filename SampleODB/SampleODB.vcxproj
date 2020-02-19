@@ -77,8 +77,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)thirdparty\sqlite3_x86-windows\include;$(SolutionDir)thirdparty\libodb-sqlite_x86-windows\include;$(SolutionDir)thirdparty\libodb_x86-windows\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)thirdparty\sqlite3_x86-windows\debug\lib;$(SolutionDir)thirdparty\libodb-sqlite_x86-windows\debug\lib;$(SolutionDir)thirdparty\libodb_x86-windows\debug\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -117,12 +117,11 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
-      <AdditionalDependencies>libodb.lib;libodb-sqlite.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /r /y "$(SolutionDir)thirdparty\libodb_x86-windows\debug\bin\libodb.dll" "$(TargetDir)"
-xcopy /r /y "$(SolutionDir)thirdparty\libodb-sqlite_x86-windows\debug\bin\libodb-sqlite.dll" "$(TargetDir)"
-xcopy /r /y "$(SolutionDir)thirdparty\sqlite3_x86-windows\debug\bin\sqlite3.dll" "$(TargetDir)"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
