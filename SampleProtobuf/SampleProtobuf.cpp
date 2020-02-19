@@ -120,7 +120,7 @@ int main(int argc, char ** argv)
 		// Read the existing address book.
 		fstream input("addressbok.db", ios::in | ios::binary);
 		if (!input) {
-			cout <<"addressbok.txt : File not found.  Creating a new file." << endl;
+			cout <<"addressbok.db : File not found.  Creating a new file." << endl;
 		}
 		else if (!address_book.ParseFromIstream(&input)) {
 			cerr << "Failed to parse address book." << endl;
