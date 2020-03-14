@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(IncludePath)</IncludePath>
+    <IncludePath>$(solutiondir)SampleAsio;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -91,7 +91,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;GLOG_NO_ABBREVIATED_SEVERITIES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -158,6 +158,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="netty\codec\LengthFieldPrepender.cpp" />
     <ClCompile Include="serialization\camel-agvs-communication.pb.cc" />
     <ClCompile Include="serialization\client.hpp" />
     <ClCompile Include="serialization\server.hpp" />
@@ -185,6 +186,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="chat_message.h" />
+    <ClInclude Include="netty\bootstrap\BaseClientBootstrap.h" />
+    <ClInclude Include="netty\bootstrap\ClientBootstrap.h" />
+    <ClInclude Include="netty\channel\Handler.h" />
+    <ClInclude Include="netty\channel\HandlerContext-inl.h" />
+    <ClInclude Include="netty\channel\HandlerContext.h" />
+    <ClInclude Include="netty\channel\Pipeline-inl.h" />
+    <ClInclude Include="netty\channel\Pipeline.h" />
+    <ClInclude Include="netty\codec\LengthFieldPrepender.h" />
     <ClInclude Include="serialization\camel-agvs-communication.pb.h" />
     <ClInclude Include="serialization\connection.hpp" />
     <ClInclude Include="service\basic_logger.hpp" />
