@@ -24,6 +24,7 @@
 #include <netty/channel/Pipeline.h>
 #include <memory>
 #include <future>
+#include <asio.hpp>
 
 namespace netty {
 
@@ -34,29 +35,29 @@ namespace netty {
 //  virtual void onEstablished(SSL_SESSION* session) = 0;
 //};
 
-class ClientBootstrapSocketOptions {
- public:
-  ClientBootstrapSocketOptions& setV4OptionMap(
-      const folly::SocketOptionMap& options) {
-    v4_ = options;
-    return *this;
-  }
-  folly::SocketOptionMap const& getV4OptionMap() const {
-    return v4_;
-  }
-  ClientBootstrapSocketOptions& setV6OptionMap(
-      const folly::SocketOptionMap& options) {
-    v6_ = options;
-    return *this;
-  }
-  folly::SocketOptionMap const& getV6OptionMap() const {
-    return v6_;
-  }
-
- private:
-  folly::SocketOptionMap v4_;
-  folly::SocketOptionMap v6_;
-};
+//class ClientBootstrapSocketOptions {
+// public:
+//  ClientBootstrapSocketOptions& setV4OptionMap(
+//      const folly::SocketOptionMap& options) {
+//    v4_ = options;
+//    return *this;
+//  }
+//  folly::SocketOptionMap const& getV4OptionMap() const {
+//    return v4_;
+//  }
+//  ClientBootstrapSocketOptions& setV6OptionMap(
+//      const folly::SocketOptionMap& options) {
+//    v6_ = options;
+//    return *this;
+//  }
+//  folly::SocketOptionMap const& getV6OptionMap() const {
+//    return v6_;
+//  }
+//
+// private:
+//  folly::SocketOptionMap v4_;
+//  folly::SocketOptionMap v6_;
+//};
 
 //using SSLSessionEstablishedCallbackUniquePtr =
 //    std::unique_ptr<SSLSessionEstablishedCallback>;
@@ -67,14 +68,13 @@ class ClientBootstrapSocketOptions {
  */
 template <typename P = DefaultPipeline>
 class BaseClientBootstrap {
- public:
+public:
   using Ptr = std::unique_ptr<BaseClientBootstrap>;
   BaseClientBootstrap() {}
 
   virtual ~BaseClientBootstrap() = default;
 
-  BaseClientBootstrap<P>* pipelineFactory(
-      std::shared_ptr<PipelineFactory<P>> factory) noexcept {
+  BaseClientBootstrap<P>* pipelineFactory(std::shared_ptr<PipelineFactory<P>> factory) noexcept {
     pipelineFactory_ = factory;
     return this;
   }
@@ -84,23 +84,24 @@ class BaseClientBootstrap {
   }
 
   virtual std::future<P*> connect(
-      const folly::SocketAddress& address,
+      const std::string host,
+	  const std::string port,
       std::chrono::milliseconds timeout = std::chrono::milliseconds(0)) = 0;
 
-  BaseClientBootstrap* sslContext(folly::SSLContextPtr sslContext) {
-    sslContext_ = sslContext;
-    return this;
-  }
+  //BaseClientBootstrap* sslContext(folly::SSLContextPtr sslContext) {
+  //  sslContext_ = sslContext;
+  //  return this;
+  //}
 
-  BaseClientBootstrap* sslSession(SSL_SESSION* sslSession) {
-    sslSession_ = sslSession;
-    return this;
-  }
+  //BaseClientBootstrap* sslSession(SSL_SESSION* sslSession) {
+  //  sslSession_ = sslSession;
+  //  return this;
+  //}
 
-  BaseClientBootstrap* serverName(const std::string& sni) {
-    sni_ = sni;
-    return this;
-  }
+  //BaseClientBootstrap* serverName(const std::string& sni) {
+  //  sni_ = sni;
+  //  return this;
+  //}
 
   //BaseClientBootstrap* sslSessionEstablishedCallback(
   //    SSLSessionEstablishedCallbackUniquePtr sslSessionEstablishedCallback) {
@@ -108,42 +109,45 @@ class BaseClientBootstrap {
   //  return this;
   //}
 
-  BaseClientBootstrap* deferSecurityNegotiation(bool deferSecurityNegotiation) {
-    deferSecurityNegotiation_ = deferSecurityNegotiation;
-    return this;
-  }
+  //BaseClientBootstrap* deferSecurityNegotiation(bool deferSecurityNegotiation) {
+  //  deferSecurityNegotiation_ = deferSecurityNegotiation;
+  //  return this;
+  //}
 
   void setPipeline(const typename P::Ptr& pipeline) {
     pipeline_ = pipeline;
   }
 
-  virtual void makePipeline(
-      std::shared_ptr<folly::AsyncTransportWrapper> socket) {
-    pipeline_ = pipelineFactory_->newPipeline(socket);
+  //virtual void makePipeline( std::shared_ptr<folly::AsyncTransportWrapper> socket) {
+  //  pipeline_ = pipelineFactory_->newPipeline(socket);
+  //}
+
+  virtual void makePipeline(std::shared_ptr<asio::ip::tcp::socket> socket) {
+	  pipeline_ = pipelineFactory_->newPipeline(socket);
   }
 
-  void setSocketOptions(const ClientBootstrapSocketOptions& sockOpts) {
-    socketOptions_ = sockOpts;
-  }
+  //void setSocketOptions(const ClientBootstrapSocketOptions& sockOpts) {
+  //  socketOptions_ = sockOpts;
+  //}
 
  protected:
-  const folly::SocketOptionMap& getSocketOptions(sa_family_t ipFamily) {
-    if (ipFamily == AF_INET) {
-      return socketOptions_.getV4OptionMap();
-    } else if (ipFamily == AF_INET6) {
-      return socketOptions_.getV6OptionMap();
-    }
-    return folly::emptySocketOptionMap;
-  }
+  //const folly::SocketOptionMap& getSocketOptions(sa_family_t ipFamily) {
+  //  if (ipFamily == AF_INET) {
+  //    return socketOptions_.getV4OptionMap();
+  //  } else if (ipFamily == AF_INET6) {
+  //    return socketOptions_.getV6OptionMap();
+  //  }
+  //  return folly::emptySocketOptionMap;
+  //}
 
   std::shared_ptr<PipelineFactory<P>> pipelineFactory_;
   typename P::Ptr pipeline_;
-  folly::SSLContextPtr sslContext_;
-  SSL_SESSION* sslSession_{nullptr};
-  std::string sni_;
-  bool deferSecurityNegotiation_{false};
-  SSLSessionEstablishedCallbackUniquePtr sslSessionEstablishedCallback_;
-  ClientBootstrapSocketOptions socketOptions_;
+  //folly::SSLContextPtr sslContext_;
+  //SSL_SESSION* sslSession_{nullptr};
+  //std::string sni_;
+  //bool deferSecurityNegotiation_{false};
+  //SSLSessionEstablishedCallbackUniquePtr sslSessionEstablishedCallback_;
+  //ClientBootstrapSocketOptions socketOptions_;
 };
 
 template <typename ClientBootstrap = BaseClientBootstrap<>>

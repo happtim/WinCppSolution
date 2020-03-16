@@ -158,6 +158,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="netty\channel\Pipeline.cpp" />
     <ClCompile Include="netty\codec\LengthFieldPrepender.cpp" />
     <ClCompile Include="serialization\camel-agvs-communication.pb.cc" />
     <ClCompile Include="serialization\client.hpp" />
@@ -170,22 +171,20 @@
     <ClCompile Include="test_async_func.cpp" />
     <ClCompile Include="test_buffer.cpp" />
     <ClCompile Include="test_chat_client.cpp" />
+    <ClCompile Include="test_async_echo_client.cpp" />
     <ClCompile Include="test_echo_server.cpp" />
     <ClCompile Include="test_heartbeat.cpp" />
     <ClCompile Include="test_iostream_client.cpp" />
     <ClCompile Include="SampleAsio.cpp" />
-    <ClCompile Include="test_example.h">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
+    <ClCompile Include="test_netty_client.cpp" />
     <ClCompile Include="test_serial_port.cpp" />
     <ClCompile Include="test_timer.cpp" />
+    <ClCompile Include="test_use_future.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="chat_message.h" />
+    <ClInclude Include="folly\io\async\DestructorCheck.h" />
+    <ClInclude Include="folly\Unit.h" />
     <ClInclude Include="netty\bootstrap\BaseClientBootstrap.h" />
     <ClInclude Include="netty\bootstrap\ClientBootstrap.h" />
     <ClInclude Include="netty\channel\Handler.h" />
@@ -201,7 +200,6 @@
     <ClInclude Include="service\commander_service.hpp" />
     <ClInclude Include="service\logger.hpp" />
     <ClInclude Include="service\logger_service.hpp" />
-    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="serialization\camel-agvs-communication.proto" />

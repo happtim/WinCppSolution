@@ -18,7 +18,7 @@
 
 //#include <folly/io/async/AsyncSSLSocket.h>
 //#include <folly/io/async/AsyncSocket.h>
-#include <folly/io/async/DestructorCheck.h>
+//#include <folly/io/async/DestructorCheck.h>
 //#include <folly/io/async/EventBaseManager.h>
 #include <netty/bootstrap/BaseClientBootstrap.h>
 #include <netty/channel/Pipeline.h>
@@ -104,7 +104,7 @@ class ClientBootstrap : public BaseClientBootstrap<Pipeline>//,
 	  //const folly::SocketAddress& address,
 		const std::string host,
 		const std::string port,
-	  std::chrono::milliseconds timeout = std::chrono::milliseconds(0)) override {
+		std::chrono::milliseconds timeout = std::chrono::milliseconds(0)) override {
 
     //auto base = (group_) ? group_->getEventBase()  : folly::EventBaseManager::get()->getEventBase();
     std::future<Pipeline*> retval((Pipeline*)nullptr);
@@ -127,19 +127,20 @@ class ClientBootstrap : public BaseClientBootstrap<Pipeline>//,
       //  socket = folly::AsyncSocket::newSocket(base);
       /*}*/
 
-	tcp::resolver resolver(io_context);
+	asio::ip::tcp::resolver resolver(*group_);
 
 	auto endpoints = resolver.resolve(host, port);
 
-	asio::ip::tcp::socket socket_(io_context);
+	//后续std::move到pipeline中
+	asio::ip::tcp::socket socket_(*group_);
 
 	std::promise<Pipeline*> promise;
 	retval = promise.getFuture();
 
 	//void do_connect(const tcp::resolver::results_type& endpoints)
 	//{
-		asio::async_connect(socket_, endpoints,
-			[&](std::error_code ec, tcp::endpoint)
+	asio::async_connect(socket_, endpoints,
+			[&](std::error_code ec, asio::ip::tcp::endpoint)
 		{
 			if (!ec)
 			{
@@ -147,13 +148,18 @@ class ClientBootstrap : public BaseClientBootstrap<Pipeline>//,
 				if (this->getPipeline()) {
 					this->getPipeline()->transportActive();
 				}
-				promise_.setValue(this->getPipeline());
+				promise.set_value(this->getPipeline());
+				//promise_.setValue(this->getPipeline());
 
 				//do_read_header();
 			}
 			else {
-				promise_.setException(
-				folly::make_exception_wrapper<folly::AsyncSocketException>(ex));
+				//promise_.setException(
+				//folly::make_exception_wrapper<folly::AsyncSocketException>(ex));
+
+				//promise.set_exception(
+				//	std::exception()
+				//	folly::make_exception_wrapper<folly::AsyncSocketException>(ex));
 			}
 		});
 	//}

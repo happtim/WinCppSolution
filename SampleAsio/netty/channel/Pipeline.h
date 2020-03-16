@@ -22,7 +22,7 @@
 //#include <folly/ExceptionWrapper.h>
 //#include <folly/Memory.h>
 //#include <folly/futures/Future.h>
-//#include <folly/Unit.h>
+#include <folly/Unit.h>
 //#include <folly/io/IOBufQueue.h>
 //#include <folly/io/async/AsyncTransport.h>
 //#include <folly/io/async/DelayedDestruction.h>
@@ -33,19 +33,6 @@
 #include <future>
 #include <vector>
 #include <asio.hpp>
-
-
-namespace folly {
-
-	struct Unit {
-		constexpr bool operator==(const Unit& /*other*/) const {
-			return true;
-		}
-		constexpr bool operator!=(const Unit& /*other*/) const {
-			return false;
-		}
-	};
-}
 
 namespace netty {
 
@@ -250,17 +237,6 @@ namespace netty {
 		OutboundLink<W>* back_{ nullptr };
 	};
 
-} // namespace wangle
-
-//namespace folly {
-//
-//	class AsyncSocket;
-//	class AsyncTransportWrapper;
-//	class AsyncUDPSocket;
-//
-//}
-
-namespace netty {
 
 	using DefaultPipeline =
 		Pipeline< std::vector<asio::mutable_buffer>&, std::unique_ptr<asio::mutable_buffer>>;

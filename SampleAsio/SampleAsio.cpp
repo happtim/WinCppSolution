@@ -1,39 +1,11 @@
 // SampleAsio.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
+#include <gtest/gtest.h>
 
-#include "test_example.h"
-
-int main()
+int main(int argc,char** argv)
 {
-	try {
-		//test_iostream_client();
-
-		//test_chat_client();
-
-		//test_echo_server();
-
-		//test_heartbeat();
-
-		//test_timer();
-
-		//test_buffer();
-
-		//test_async_func();
-
-		//test_service();
-
-		//test_serial_port();
-
-		test_protobuf();
-
-		std::cout << "Hello World!\n";
-	}
-	catch (std::exception ex) {
-		std::cerr << ex.what() << std::endl;
-	}
-
-
+	testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
 }
 
