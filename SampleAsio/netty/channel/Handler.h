@@ -26,6 +26,7 @@
 #include <asio/buffer.hpp>
 #include <asio.hpp>
 #include <future>
+#include <folly/Unit.h>
 
 
 namespace netty {

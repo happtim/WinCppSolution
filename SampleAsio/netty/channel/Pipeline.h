@@ -219,7 +219,7 @@ namespace netty {
 		template <class T = W>
 		typename std::enable_if<!std::is_same<T, folly::Unit>::value,std::future<folly::Unit>>::type
 			writeException(std::exception e);
-
+		
 		template <class T = W>
 		typename std::enable_if<!std::is_same<T, folly::Unit>::value,std::future<folly::Unit>>::type
 			close();

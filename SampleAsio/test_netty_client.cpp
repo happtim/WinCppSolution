@@ -3,8 +3,9 @@
 #include <string>
 #include <gtest/gtest.h>
 #include <netty/bootstrap/ClientBootstrap.h>
+//#include <netty/channel/Pipeline.h>
 
-//typedef Pipeline<std::vector<asio::mutable_buffer>&, std::string> EchoPipeline;
+typedef Pipeline<std::vector<asio::mutable_buffer>&, std::string> EchoPipeline;
 
 // the handler for receiving messages back from the server
 

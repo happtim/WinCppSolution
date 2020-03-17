@@ -21,11 +21,8 @@
 //#include <folly/ExceptionWrapper.h>
 #include <future>
 #include <asio/ip/tcp.hpp>
+#include <folly/Unit.h>
 
-
-namespace folly {
-	struct Unit;
-}
 
 namespace netty {
 

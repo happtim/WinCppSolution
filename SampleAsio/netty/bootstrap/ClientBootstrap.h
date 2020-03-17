@@ -90,7 +90,8 @@ class ClientBootstrap : public BaseClientBootstrap<Pipeline>//,
 
 	ClientBootstrap* group(
 		//std::shared_ptr<folly::IOThreadPoolExecutor> group) {
-		std::shared_ptr<asio::io_context> group) {
+		//std::shared_ptr<asio::io_context> group) {
+		asio::io_context group) {
 			group_ = group;
 			return this;
 	}
@@ -107,7 +108,7 @@ class ClientBootstrap : public BaseClientBootstrap<Pipeline>//,
 		std::chrono::milliseconds timeout = std::chrono::milliseconds(0)) override {
 
     //auto base = (group_) ? group_->getEventBase()  : folly::EventBaseManager::get()->getEventBase();
-    std::future<Pipeline*> retval((Pipeline*)nullptr);
+    //std::future<Pipeline*> retval((Pipeline*)nullptr);
 
     //base->runImmediatelyOrRunInEventBaseThreadAndWait([&](){
       //std::shared_ptr<folly::AsyncSocket> socket;
@@ -127,19 +128,18 @@ class ClientBootstrap : public BaseClientBootstrap<Pipeline>//,
       //  socket = folly::AsyncSocket::newSocket(base);
       /*}*/
 
-	asio::ip::tcp::resolver resolver(*group_);
-
+	asio::ip::tcp::resolver resolver(group_);
 	auto endpoints = resolver.resolve(host, port);
 
 	//后续std::move到pipeline中
-	asio::ip::tcp::socket socket_(*group_);
+	std::shared_ptr<asio::ip::tcp::socket> socket_ = std::make_shared<asio::ip::tcp::socket>(group_);
 
 	std::promise<Pipeline*> promise;
-	retval = promise.getFuture();
+	std::future<Pipeline*> retval = promise.get_future();
 
 	//void do_connect(const tcp::resolver::results_type& endpoints)
 	//{
-	asio::async_connect(socket_, endpoints,
+	asio::async_connect(*socket_, endpoints,
 			[&](std::error_code ec, asio::ip::tcp::endpoint)
 		{
 			if (!ec)
@@ -184,7 +184,8 @@ class ClientBootstrap : public BaseClientBootstrap<Pipeline>//,
  protected:
   int port_;
   //std::shared_ptr<folly::IOThreadPoolExecutor> group_;
-	std::shared_ptr<asio::io_context> group_;
+	//std::shared_ptr<asio::io_context> group_;
+	asio::io_context group_;
 };
 
 class ClientBootstrapFactory : public BaseClientBootstrapFactory<BaseClientBootstrap<>> {
