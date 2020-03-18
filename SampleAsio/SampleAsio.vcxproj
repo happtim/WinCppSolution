@@ -160,6 +160,7 @@
   <ItemGroup>
     <ClCompile Include="netty\channel\Pipeline.cpp" />
     <ClCompile Include="netty\codec\LengthFieldPrepender.cpp" />
+    <ClCompile Include="netty\codec\LineBasedFrameDecoder.cpp" />
     <ClCompile Include="serialization\camel-agvs-communication.pb.cc" />
     <ClCompile Include="serialization\client.hpp" />
     <ClCompile Include="serialization\server.hpp" />
@@ -187,12 +188,17 @@
     <ClInclude Include="folly\Unit.h" />
     <ClInclude Include="netty\bootstrap\BaseClientBootstrap.h" />
     <ClInclude Include="netty\bootstrap\ClientBootstrap.h" />
+    <ClInclude Include="netty\channel\AsyncSocketHandler.h" />
     <ClInclude Include="netty\channel\Handler.h" />
     <ClInclude Include="netty\channel\HandlerContext-inl.h" />
     <ClInclude Include="netty\channel\HandlerContext.h" />
     <ClInclude Include="netty\channel\Pipeline-inl.h" />
     <ClInclude Include="netty\channel\Pipeline.h" />
+    <ClInclude Include="netty\codec\ByteToMessageDecoder.h" />
+    <ClInclude Include="netty\codec\FixedLengthFrameDecoder.h" />
     <ClInclude Include="netty\codec\LengthFieldPrepender.h" />
+    <ClInclude Include="netty\codec\LineBasedFrameDecoder.h" />
+    <ClInclude Include="netty\codec\StringCodec.h" />
     <ClInclude Include="serialization\camel-agvs-communication.pb.h" />
     <ClInclude Include="serialization\connection.hpp" />
     <ClInclude Include="service\basic_logger.hpp" />

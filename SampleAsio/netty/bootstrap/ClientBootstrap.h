@@ -90,8 +90,8 @@ class ClientBootstrap : public BaseClientBootstrap<Pipeline>//,
 
 	ClientBootstrap* group(
 		//std::shared_ptr<folly::IOThreadPoolExecutor> group) {
-		//std::shared_ptr<asio::io_context> group) {
-		asio::io_context group) {
+		std::shared_ptr<asio::io_context> group) {
+		//asio::io_context group) {
 			group_ = group;
 			return this;
 	}
@@ -128,11 +128,11 @@ class ClientBootstrap : public BaseClientBootstrap<Pipeline>//,
       //  socket = folly::AsyncSocket::newSocket(base);
       /*}*/
 
-	asio::ip::tcp::resolver resolver(group_);
+	asio::ip::tcp::resolver resolver(*group_);
 	auto endpoints = resolver.resolve(host, port);
 
 	//后续std::move到pipeline中
-	std::shared_ptr<asio::ip::tcp::socket> socket_ = std::make_shared<asio::ip::tcp::socket>(group_);
+	std::shared_ptr<asio::ip::tcp::socket> socket_ = std::make_shared<asio::ip::tcp::socket>(*group_);
 
 	std::promise<Pipeline*> promise;
 	std::future<Pipeline*> retval = promise.get_future();
@@ -184,8 +184,8 @@ class ClientBootstrap : public BaseClientBootstrap<Pipeline>//,
  protected:
   int port_;
   //std::shared_ptr<folly::IOThreadPoolExecutor> group_;
-	//std::shared_ptr<asio::io_context> group_;
-	asio::io_context group_;
+	std::shared_ptr<asio::io_context> group_;
+	//asio::io_context group_;
 };
 
 class ClientBootstrapFactory : public BaseClientBootstrapFactory<BaseClientBootstrap<>> {

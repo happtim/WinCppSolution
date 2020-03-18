@@ -10,7 +10,7 @@
 #ifndef SERIALIZATION_CLIENT_HPP
 #define SERIALIZATION_CLIENT_HPP
 
-#include "../stdafx.h";
+#include <asio.hpp>
 
 #include "connection.hpp" // Must come before boost/serialization headers.
 
@@ -29,12 +29,12 @@ public:
   {
     // Resolve the host name into an IP address.
     asio::ip::tcp::resolver resolver(io_context);
-    asio::ip::tcp::resolver::query query(host, service);
-    asio::ip::tcp::resolver::iterator endpoint_iterator =
-      resolver.resolve(query);
+	auto endpoints = resolver.resolve(host, service);
+    //asio::ip::tcp::resolver::query query(host, service);
+    //asio::ip::tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
 
     // Start an asynchronous connect operation.
-    asio::async_connect(connection_.socket(), endpoint_iterator,
+    asio::async_connect(connection_.socket(), endpoints,
         std::bind(&client::handle_connect, this,  _1));
   }
 

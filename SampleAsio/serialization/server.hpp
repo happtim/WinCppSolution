@@ -32,7 +32,7 @@ public:
   {
 
     // Start an accept operation for a new connection.
-    connection_ptr new_conn(new connection(acceptor_.get_io_context()));
+    connection_ptr new_conn(new connection(io_context));
     acceptor_.async_accept(new_conn->socket(),
         std::bind(&server::handle_accept, this, _1, new_conn));
   }

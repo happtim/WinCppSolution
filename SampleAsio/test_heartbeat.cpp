@@ -128,7 +128,7 @@ class client
 		void start_connect(tcp::resolver::results_type endpoints)
 		{
 
-			std::cout << "Trying " << endpoints->endpoint() << "...\n";
+			std::cout << "Trying " << endpoints ->endpoint()<< "...\n";
 
 			// Set a deadline for the connect operation.
 			deadline_.expires_after(std::chrono::seconds(60));
