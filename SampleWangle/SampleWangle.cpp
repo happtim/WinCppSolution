@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
 	ClientBootstrap<EchoPipeline> client;
 	client.group(std::make_shared<folly::IOThreadPoolExecutor>(1));
 	client.pipelineFactory(std::make_shared<EchoPipelineFactory>());
-	auto pipeline = client.connect(SocketAddress("127.0.0.1", 8080)).get();
+	auto pipeline = client.connect(SocketAddress("127.0.0.1", 9601)).get();
 
 	try {
 		while (true) {
